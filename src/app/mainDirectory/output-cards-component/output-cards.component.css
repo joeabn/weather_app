@@ -1,0 +1,76 @@
+
+
+ul {
+  list-style: none;
+}
+
+.listOfCards{
+  width: 99vw;
+}
+.weatherCardsDiv {
+  position: relative;
+  display: inline-block;
+
+}
+.weatherCard {
+  /*border: thick double black;*/
+  border:2px solid black;
+  outline-color: ghostwhite;
+  background-color: white;
+  outline-style:outset;
+  position: relative;
+  width: 16em;
+  height: auto;
+  margin: 5em;
+  color: black;
+  display: inline-block;
+}
+
+.weeklyWeatherCard{
+  border:2px solid black;
+  outline-color: ghostwhite;
+  background-color: white;
+  outline-style:outset;
+  position: relative;
+  width: 34em;
+  height: auto;
+  margin: 5em;
+  color: black;
+  display: inline-block;
+}
+mat-card-content{
+  text-align: center;
+  max-width: 170px;
+  margin: 0 auto 1em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+.weatherStatus:hover{
+  max-width: 170px;
+  text-overflow: initial;
+  overflow-x: auto;
+}
+mat-card-actions button {
+  width: 16em;
+  color: #007aff !important;
+  background-color: white !important;
+  font-weight: bold;
+}
+mat-card-actions button:hover{
+  color:darkblue !important;
+  font-weight: bold;
+}
+cdk-virtual-scroll-viewport {
+  width: 100vw;
+  height: 43em;
+  margin-top: 1em;
+  display: flex;
+}
+
+
+cdk-virtual-scroll-viewport .cdk-virtual-scroll-content-wrapper {
+  display: flex;
+  position: relative !important;
+
+}

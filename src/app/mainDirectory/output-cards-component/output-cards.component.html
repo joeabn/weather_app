@@ -1,0 +1,70 @@
+<div align="center">
+  <cdk-virtual-scroll-viewport [itemSize]="weatherCard.length" orientation="horizontal" align="center">
+    <div class="listOfCards" *ngIf="weatherCard.length >= 0 " align="center">
+      <div class="weatherCardsDiv" *ngFor='let weather of weatherCard' align="center">
+
+        <mat-card class="weatherCard" align="center" *ngIf="!toggleChecked[weatherCard.indexOf(weather)]">
+          <mat-card-title><b><u>City</u></b>:  {{weather[0].cityName | titlecase}}
+          </mat-card-title>
+          <mat-divider inset="True"></mat-divider>
+
+          <img mat-card-lg-image
+               [src]=weather[0].icon
+               alt="image here">
+          <mat-divider inset="True"></mat-divider>
+          <mat-card-content class="weatherStatus"><b><u>Status</u></b>:  {{weather[0].weather | uppercase}}
+          </mat-card-content>
+          <mat-card-content><b><u>Temperature</u></b>: {{weather[0].tempC}} C</mat-card-content>
+
+          <mat-card-actions>
+
+            <mat-slide-toggle aria-label="multiDay" style="font-size: small; margin-bottom:3px " color="primary"
+                              [(ngModel)]="toggleChecked[weatherCard.indexOf(weather)]" (change)="save()"> multi-day
+            </mat-slide-toggle>
+
+            <button mat-button style="background-color:#673ab7; color: aliceblue" (click)="deleteCard(weather)">
+              Delete
+            </button>
+          </mat-card-actions>
+        </mat-card>
+
+        <mat-card class="weeklyWeatherCard" align="center" *ngIf="toggleChecked[weatherCard.indexOf(weather)]">
+          <mat-card-title><b><u>City</u></b>:  {{weather[0].cityName | titlecase}}
+          </mat-card-title>
+          <mat-divider inset="True"></mat-divider>
+
+          <div *ngFor="let i of [0,1,2]" style="position: relative; float: left;margin: 0 5px ">
+            <mat-card-content><b><u>{{weather[0].date | date}}</u></b></mat-card-content>
+            <img mat-card-lg-image
+                 [src]=weather[i].icon
+                 alt="image here">
+            <mat-divider inset="True"></mat-divider>
+            <mat-card-content class="weatherStatus"><b><u>Status</u></b>: {{weather[i].weather | uppercase}}
+            </mat-card-content>
+            <mat-card-content><b><u>Temperature</u></b>: {{weather[i].tempC}} C</mat-card-content>
+
+          </div>
+
+
+          <mat-card-actions>
+
+            <mat-slide-toggle aria-label="multiDay" style="font-size: small; margin-bottom:3px"
+                              [(ngModel)]="toggleChecked[weatherCard.indexOf(weather)]" (change)="save()"> multi-day
+            </mat-slide-toggle>
+            <button mat-button style="background-color:#673ab7; color: aliceblue" (click)="deleteCard(weather)">
+              Delete
+            </button>
+          </mat-card-actions>
+
+        </mat-card>
+      </div>
+    </div>
+    <div *ngIf="searchClicked" align="center" STYLE="width: 100%; margin-top: 2em"> <mat-progress-spinner
+      class="example-margin"
+      mode="indeterminate" color="accent">
+    </mat-progress-spinner></div>
+  </cdk-virtual-scroll-viewport>
+</div>
+
+
+

@@ -1,0 +1,8 @@
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+.mat-form-field .mat-form-field-label {
+  color: darkgrey !important;
+}
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: white !important;
+}

@@ -1,0 +1,16 @@
+<div class="main ">
+  <h1>Daily weather</h1>
+  <div class="input" align="center">
+    <app-city-input [weatherCard]="weatherCard" [nameOfCities]="nameOfCities" [toggleChecked]="this.toggleChecked"
+                    (outputToggleChecked)="this.toggleChecked = $event" (searchClicked)="this.searchClicked=$event"
+                    (outputOfNameOfCities)="this.nameOfCities=$event"
+                    (outputOfWeatherCards)="this.weatherCard=$event"></app-city-input>
+  </div>
+
+  <div class="output" align="center">
+    <app-output-cards [weatherCard]="weatherCard" [nameOfCities]="nameOfCities" [toggleChecked]="toggleChecked" [searchClicked]="searchClicked"
+                      (outputOfNameOfCities)="this.nameOfCities=$event"
+                      (outputOfWeatherCards)="this.weatherCard=$event"></app-output-cards>
+  </div>
+</div>
+

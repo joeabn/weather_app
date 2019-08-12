@@ -1,0 +1,23 @@
+
+<div class="input">
+  <span >Please enter the name of the city : </span>
+  <mat-form-field class="mat_field_input">
+    <mat-chip-list #chipList aria-label="city selection">
+      <mat-chip *ngFor="let city of nameOfCities" [selectable]="selectable" [removable]="removable" (removed)="remove(city)">
+        {{city}}
+        <mat-icon matChipRemove *ngIf="removable"> X </mat-icon>
+      </mat-chip>
+      <label>
+        <input placeholder="City Name" #cityInput [formControl]="inputCityName" [matAutocomplete]="auto" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+      </label>
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let city of filteredOptions | async" [value]="city">
+        {{city | titlecase}}
+      </mat-option>
+    </mat-autocomplete>
+
+  </mat-form-field>
+</div>
+<button mat-raised-button (click)="testIfInputIsGood()"> search for weather</button>
+<button mat-raised-button (click)="clearData()">clear</button>
